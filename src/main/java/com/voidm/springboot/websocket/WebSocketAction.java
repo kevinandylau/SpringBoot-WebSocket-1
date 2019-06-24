@@ -27,7 +27,7 @@ public class WebSocketAction {
     @MessageMapping("/sendTopic")
     @SendTo("/topic/getResponse")
     public ServerMessage sendTopic(ClientMessage message, StompHeaderAccessor stompHeaderAccessor,Principal principal) {
-        logger.info("接收到了信息" + message.getName());
+        logger.info("一对多接收到了信息====================" + message.getName());
         return new ServerMessage("一对多服务 响应");
     }
 
@@ -38,7 +38,7 @@ public class WebSocketAction {
     @SendToUser("/queue/getResponse")
     public ServerMessage sendUser(ClientMessage message, StompHeaderAccessor stompHeaderAccesso,Principal principal) {
         stompHeaderAccesso.getSessionAttributes();
-        logger.info("接收到了信息" + message.getName());
+        logger.info("一对一接收到了信息==============" + message.getName());
         return new ServerMessage("一对一服务 响应");
     }
 
